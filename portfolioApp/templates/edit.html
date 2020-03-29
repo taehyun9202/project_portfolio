@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="profilebar">
+        <!-- <img class="cir_pic" src="{{user.picture.url}}"> -->
+        <p class="logusername"><a href='/edit'>{{user.firstname}} {{user.lastname}}</a></p>
+        <p style="float: right;"><a href='/logout'>Log out</a></p>
+        <p style="float: right; padding-right: 20px;"><a href='/list'>My List</a></p>
+    </div>
+    <div class="navbar navbar-sm-12">
+    <div>
+        <h3><a href='/home' class="nav">Home</a></h3>
+        <h3><a href='/aboutme' class="nav">About Me</a></h3>
+        <h3><a href='/mywork' class="nav">My Work</a></h3>
+        <h3><a href='/contact' class="nav">Contact</a></h3>
+    </div>
+    <br></br>
+    <br></br>
+    <form action="/update" method="post" enctype="multipart/form-data">
+    <div class="row" style="padding-bottom: 100px;">
+        {% csrf_token %}
+        <!-- <div class="col-sm-5">
+            <label>Select image:</label>
+            <img class="editpic" src="{{user.picture.url}}">
+            <p></p>
+                <input type="file" name="img" accept="image/*" style="float: right;">
+        </div> -->
+        <div class="col-sm-6">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="fname">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lname">
+            <label>Password</label>
+            <input type="password" class="form-control"name="password">
+            <label>New Password</label>
+            <input type="password" class="form-control" name="newpw">
+            <label>Confirm PW</label>
+            <input type="password" class="form-control" name="confirm">
+            <p></p>
+            <button type="submit" class="btn btn-primary";>Change Profile</button>
+        </div>
+    </div>
+    </form> 
+    {% if messages %} 
+        <ul>
+            {% for message in messages %}
+                <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

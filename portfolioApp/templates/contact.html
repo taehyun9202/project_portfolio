@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>  
+<div class="container">
+    <div class="profilebar">
+        <!-- <img class="cir_pic" src="{{user.picture.url}}"> -->
+        <p class="logusername"><a href='/edit'>{{user.firstname}} {{user.lastname}}</a></p>
+        <p style="float: right;"><a href='/logout'>Log out</a></p>
+        <p style="float: right; padding-right: 20px;"><a href='/list'>My List</a></p>
+    </div>
+    <div class="navbar navbar-sm-12">
+        <h3><a href='/home' class="nav">Home</a></h3>
+        <h3><a href='/aboutme' class="nav">About Me</a></h3>
+        <h3><a href='/mywork' class="nav">My Work</a></h3>
+        <h3><a href='/contact' class="nav">Contact</a></h3>
+    </div>
+    <div class="content content-sm-12">
+        <h1>Contact</h1>
+        <p>Hi, I am coding dojo student</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <br></br>
+        <div class="row">
+            <div class="col-md-8">
+                <form action="/sendemail" method="post">
+                {% csrf_token %}
+                <div class="col-md-5 form-group" style="display: inline-block;">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="col-md-5 form-group" style="display: inline-block;">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="col-md-10 form-group">
+                    <label>Subject</label>
+                    <input type="text" class="form-control" name="subject">
+                </div>
+                <div class="col-md-10 form-group">
+                <label>Message</label>
+                <textarea class="form-control" name="message" cols="30" rows="10"></textarea>               
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h5>Address</h5>
+                    <p>1100 Wilson Blvd 10th floor</p>
+                    <p>Arlington, VA 22209</p>
+                </div>
+                <div>
+                    <h5>Phone</h5>
+                    <p>703-400-9295</p>
+                </div>
+                <div>
+                    <h5>Email</h5>
+                    <p>taehyun9202@hotmail.com</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">        
+    <div class="profilebar">
+        <!-- <img class="cir_pic" src="{{user.picture.url}}"> -->
+        <p class="logusername"><a href='/edit'>{{user.firstname}} {{user.lastname}}</a></p>
+        <p style="float: right;"><a href='/logout'>Log out</a></p>
+        <p style="float: right; padding-right: 20px;"><a href='/list'>My List</a></p>
+    </div>
+    <div class="navbar navbar-sm-12">
+        <h3><a href='/home' class="nav">Home</a></h3>
+        <h3><a href='/aboutme' class="nav">About Me</a></h3>
+        <h3><a href='/mywork' class="nav">My Work</a></h3>
+        <h3><a href='/contact' class="nav">Contact</a></h3>
+    </div>
+    <div class="content content-lg-12">
+        <h1>My Work</h1>
+        <p>Belows are my works!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>    
+        <br></br>
+
+        <div class="row">
+        <div class="col-lg-3">
+            <h1>Works</h1>
+        </div>
+
+        <div class="row">
+            {% for item in items %}
+            <div class="item {{item.category}} col-lg-4">
+                <a href='/item/{{item.id}}' class="item">
+                <h3 style="color: black;">{{item.name}}</h3>
+                <img class="item_images" src="{{item.image.url}}">
+                <h5 style="color: black; padding-left: 240px;">${{item.price}}</h5>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <br></br>
+        <div class="pagination">
+            {% if items.has_previous %}
+            <a href='/mywork?page=1' class="arrow"><img src="/media/forums/5425801-64 (2).png" style="height: 18px; margin-bottom: 6px;"></a>
+            <a href='/mywork?page={{items.previous_page_number}}' class="arrow"><img src="/media/forums/5425801-64 (1).png" style="height: 18px; margin-bottom: 6px;"></a>
+            {% endif %}
+
+            {% for num in items.paginator.page_range %}
+                {% if items.number == num %}
+                    <span class="pagenumber pagenumber-current.">{{num}}</span>
+                {% elif num > items.number|add:'-3' and num < items.number|add:'3'%}
+                    <a href='mywork?page={{num}}' class="pagenumber">{{num}}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if items.has_next %}
+            <a href='/mywork?page={{items.next_page_number}}' class="arrow"><img src="/media/forums/5425801-64.png" style="height: 18px; margin-bottom: 6px;"></a>
+            <a href='/mywork?page={{items.paginator.num_pages}}' class="arrow"><img src="/media/forums/5425801-64 (3).png" style="height: 18px; margin-bottom: 6px;"></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

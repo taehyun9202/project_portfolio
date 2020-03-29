@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Out</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="profilebar">
+        <!-- <img class="cir_pic" src="{{user.picture.url}}"> -->
+        <p class="logusername"><a href='/edit'>{{user.firstname}} {{user.lastname}}</a></p>
+        <p style="float: right;"><a href='/logout'>Log out</a></p>
+        <p style="float: right; padding-right: 20px;"><a href='/list'>My List</a></p>
+    </div>
+    <div class="navbar navbar-sm-12">
+        <h3><a href='/home' class="nav">Home</a></h3>
+        <h3><a href='/aboutme' class="nav">About Me</a></h3>
+        <h3><a href='/mywork' class="nav">My Work</a></h3>
+        <h3><a href='/contact' class="nav">Contact</a></h3>
+    </div>
+    <div class="content content-sm-12">
+        <h1>Shopping List</h1>
+        <br></br>   
+    </div>
+
+</div>
+
+
+</body>
+</html>
